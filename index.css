@@ -118,6 +118,11 @@ body {
     display: none;
    }
 
+   .lefts{
+    display: flex;
+    gap: 10px;
+   }
+
    .data .sdata{
     border-radius: 10px;
     min-width:31%;
@@ -207,15 +212,10 @@ progress::-moz-progress-bar {
 
     textarea{
       width: 90%;
-      margin: auto;
+      
     }
 
-    .left{
-      display: block;
-      width: 100%;
-      border: 1px solid red;
-      flex-direction: column;
-    }
+    
 
     .data{
      display: flex;
@@ -224,13 +224,28 @@ progress::-moz-progress-bar {
       width: 100% ;
     }
     .sdata{
-      width: 90% !important;}
+      width: 90% !important;
+    }
 
-   }
+    .lefts{
+      display: block;
+    }
+    
+
+    .checks{
+      margin-top: 10px;
+      display: block !important;
+    }
+
+      progress{
+       padding: 0 15px;
+
+      }
+
+      
 
 
-   progress{
-    padding: 0 15px;
+   
    }
 
    
