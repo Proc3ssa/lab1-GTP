@@ -1,0 +1,105 @@
+
+/* Bismillah :) */
+
+
+/* Default (Light theme) */
+@font-face {
+    font-family: 'DM Sans';
+    src: url('/fonts/DM-Sans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+body {
+    margin: 20px;
+    background-image: url(./assets/images/bg-light-theme.png);
+    background-repeat: round;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .modesection{
+  background-color: rgba(228, 228, 239);
+    background-repeat: round;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  header{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+   .text h1{
+    font-size: 64px;
+    line-height: 100%;
+    letter-spacing: -1px;
+    text-align: center;
+    margin: 20px auto;
+    width: 600px;
+    font-weight: bold;
+   }
+
+   .characters{
+    width: 99%;
+    height: fit-content;
+    margin: 30px auto;
+   }
+
+   textarea{
+    width: 99%;
+    border-radius: 10px;
+    background-color: rgba(242, 242, 247);
+    border: 1px solid rgba(228, 228, 239);
+    margin: auto;
+    height: 200px;
+    padding: 10px;
+   }
+
+   .characters .checks{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+   input[type="chechbox"]{
+    background-color: red;
+   }
+
+   
+
+
+
+
+
+  
+  /* dark theme */
+  @media (prefers-color-scheme: dark) {
+    
+    body{
+        margin: 0;
+        background-image: url(./assets/images/bg-dark-theme.png);
+        background-repeat: round;
+    }
+
+    header{
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+  }
+  
+
+
+
