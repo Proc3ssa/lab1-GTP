@@ -18,7 +18,8 @@ body {
   }
 
   .modesection{
-  background-color: rgba(228, 228, 239);
+    background-color: rgba(228, 228, 239);
+    background-image: url(./assets/images/icon-moon.svg);
     background-repeat: round;
     width: 30px;
     height: 30px;
@@ -35,6 +36,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+   }
+
+   .logosection{
+    background-image: url(./assets/images/logo-light-theme.svg);
+    width: 250px;
+    height: 35px;
+
    }
 
    .text h1{
@@ -206,6 +214,26 @@ progress::-moz-progress-bar {
         align-items: center;
         padding-left: 30px;
         padding-right: 30px;
+    }
+
+    .logosection{
+      width: 250px;
+      height: 35px;
+      background-image: url(./assets/images/logo-dark-theme.svg);
+    }
+
+    textarea{
+      background-color: rgba(42, 43, 55);
+      border: 1px solid rgba(64, 66, 84);
+    }
+
+    .main h1, .characters, .bars, i, .lD b, label{
+      color: white;
+    }
+
+    .modesection{
+    background-color: rgb(60, 60, 61);
+    background-image: url(./assets/images/icon-sun.svg);
     }
     
   }
