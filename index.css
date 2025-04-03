@@ -210,12 +210,29 @@ progress::-moz-progress-bar {
       margin: auto;
     }
 
-    .checks{
-      flex-direction:column;
-      margin-left: auto;
+    .left{
+      display: block;
+      width: 100%;
+      border: 1px solid red;
+      flex-direction: column;
     }
 
+    .data{
+     display: flex;
+     flex-direction: column;
+      
+      width: 100% ;
+    }
+    .sdata{
+      width: 90% !important;}
+
    }
+
+
+   progress{
+    padding: 0 15px;
+   }
+
    
 
    
@@ -262,6 +279,11 @@ progress::-moz-progress-bar {
     background-color: rgb(60, 60, 61);
     background-image: url(./assets/images/icon-sun.svg);
     }
+
+    progress::-webkit-progress-bar {
+      background-color: rgba(64, 66,84);
+      border-radius: 10px;
+  }
     
   }
   
