@@ -1,11 +1,18 @@
 // bismillah
 
+let characters = document.getElementById("characters");
+let sentences;
 function getCharLen(excSpace){ //get and set charater lenght
 
-let characters = document.getElementById("characters");
-let charLength;
+let charLength, wordCount;
+
+wordCount = characters.value.split(/\s/g).length;
+wordCount < 10 ? wordCount = "0"+wordCount : "";
+document.getElementById("numOfWords").innerHTML = wordCount;
 
 if(excSpace){
+charLength < 10 ? charLength = "0"+charLength : "";
+
 charLength = (characters.value).replace(/\s/g, "").length;
 document.getElementById("sps").style.display = "inline";
 
@@ -60,8 +67,15 @@ Spaces.addEventListener('change', function(){
 })
 }
 
+function getSentences(){
+  sentences = characters.value.split(".").length;
+  
+  document.getElementById("sentCount").innerHTML = sentences;
+}
+
 getCharLen(false);
 getSpaceStatus();
+getSentences();
 
 
 
