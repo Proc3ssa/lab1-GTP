@@ -1,37 +1,75 @@
-//  bismillah
+// bismillah
 
-const characters = document.getElementById("characters").value;
-let charLenght = characters.length;
+function getCharLen(excSpace){ //get and set charater lenght
 
-document.getElementById("numOfChar").innerHTML = charLenght; //setting number of characters value to charLength.
+let characters = document.getElementById("characters");
+let charLength;
 
-// excluding/including  spaces
-const spaces = document.getElementById('spaces');
+if(excSpace){
+charLength = (characters.value).replace(/\s/g, "").length;
+document.getElementById("sps").style.display = "inline";
 
-spaces.addEventListener('change', function(){
+}
+else{
+  charLength = characters.value.length
+  document.getElementById("sps").style.display = "none";
+  
+}
 
-    if(this.checked){
 
-    }
+document.getElementById("numOfChar").innerHTML = charLength ?? 0;
+}
 
-    else{
-        
-    }
+
+// showing/hiding character limit input
+
+let charLimit = document.getElementById("count");
+charLimit.addEventListener('change', function(){
+
+  if(this.checked){
+    document.getElementById("limit").style.display = "inline";
+  }
+
+  else{
+    document.getElementById("limit").style.display = "none";
+
+  }
 })
 
 
-//setting character limit
-const limit = document.getElementById('count');
 
 
-limit.addEventListener('change', function() {
- 
-  if (this.checked) {
+function getSpaceStatus(){ // including/excluding spaces
 
-    console.log('Checkbox is now checked!');
-    document.getElementById('limit').style.display = 'block';
+let excludeSpaces;
 
-  } else {
-    document.getElementById('limit').style.display = 'none';
+
+let Spaces = document.getElementById("spaces");
+Spaces.addEventListener('change', function(){
+  
+  if(this.checked){
+    excludeSpaces = true;
+    getCharLen(excludeSpaces);
+
   }
-});
+  else{
+    excludeSpaces = false;
+    getCharLen(excludeSpaces);
+  }
+
+})
+}
+
+getCharLen(false);
+getSpaceStatus();
+
+
+
+// setting limit bound 
+
+let limit = document.getElementById("limit");
+let limitValue;
+
+limit.addEventListener('change', function(){
+  limitValue = limit.value;
+})
