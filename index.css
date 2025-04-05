@@ -193,6 +193,12 @@ progress::-moz-progress-bar {
   margin: 21px;
 }
 
+.bar label:nth-child(1){
+  width: 5px;
+}
+
+
+
 
    /* mobile  */
 
@@ -241,11 +247,35 @@ progress::-moz-progress-bar {
        padding: 0 15px;
 
       }
-
-      
-
-
    
+   }
+
+   /* tablet */
+
+   @media (min-width: 768px) and (max-width: 1023px) {
+     .main h1{
+      width: 510px;
+     }
+
+     textarea{
+      width: 704px;
+      margin: auto;
+     }
+
+     
+     .data{
+      /* display: none; */
+     }
+
+     .data img{
+      width: 50px;
+     }
+
+     div.sdata{
+      width: 224px;
+      height: 150px;
+     }
+     
    }
 
    

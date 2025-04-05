@@ -1,18 +1,37 @@
-let Limitcheckbox = document.getElementById("count");
-let limit = document.getElementById("limit");
+//  bismillah
+
+const characters = document.getElementById("characters").value;
+let charLenght = characters.length;
+
+document.getElementById("numOfChar").innerHTML = charLenght; //setting number of characters value to charLength.
+
+// excluding/including  spaces
+const spaces = document.getElementById('spaces');
+
+spaces.addEventListener('change', function(){
+
+    if(this.checked){
+
+    }
+
+    else{
+        
+    }
+})
 
 
-Limitcheckbox.onchange = function() {
-    limit.style.display = this.checked ? "block" : "none";
-}
+//setting character limit
+const limit = document.getElementById('count');
 
-const themeToggle = document.getElementById('theme-toggle');
 
-// Set initial theme based on user's preference
-if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.body.classList.add('dark-mode');
-}
+limit.addEventListener('change', function() {
+ 
+  if (this.checked) {
 
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+    console.log('Checkbox is now checked!');
+    document.getElementById('limit').style.display = 'block';
+
+  } else {
+    document.getElementById('limit').style.display = 'none';
+  }
 });
