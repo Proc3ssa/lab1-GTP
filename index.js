@@ -1,5 +1,16 @@
 // bismillah
 
+
+
+function toggleTheme() {
+  document.body.classList.toggle('dark-theme');
+}
+
+let themeButton = document.getElementById('changeTheme');
+
+themeButton.addEventListener('click', toggleTheme);
+
+
 let characters = document.getElementById("characters");
 let sentences;
 function getCharLen(excSpace){ //get and set charater lenght
