@@ -48,6 +48,7 @@
     margin-inline: auto;
     margin-block: 42px;
     background-image: url(./assets/images/bg-light-theme.png);
+    font-family: 'Dmsans', sans-serif;
     
   }
 
@@ -82,11 +83,11 @@
   
 
    textarea{
-    width: 99%;
+    width: 100%;
     border-radius: 10px;
     background-color: var(--neutral-100);
     border: 2px solid var(--neutral-200);
-    margin: auto;
+    margin: 0 auto 16px auto;
     height: 200px;
     padding: 6px;
    }
@@ -98,16 +99,43 @@
 
    }
 
+   .debugger{
+    border:1px solid red;
+   }
+
    input[type="checkbox"]:hover{
     border: 2px solid rgba(194, 124, 248);
     outline: none;
    }
+   .alert{
+    color: var(--orange-800);
+    align-content: center;
+    margin: -5px  0 10px 0;
+    display: none;
+   }
+
+   .alert img{
+    vertical-align: middle;
+    margin-right: 5px;
+    
+   }
+   
+   input[type="number"]{
+    width: 55px;
+    height: 29px;
+    border: 1px solid var(--neutral-900);
+    border-radius: 6px;
+    text-align: center;
+    display: none;
+   }
+
+   .leftSmall{
+    margin-left: 20px;
+   }
 
    
 
-   input[type="chechbox"]{
-    background-color: red;
-   }
+   
 
    
 
