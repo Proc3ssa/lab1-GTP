@@ -13,59 +13,6 @@
     font-style: normal;
   }
 
-body {
-    margin: 20px;
-    background-image: url(./assets/images/bg-light-theme.png);
-    background-repeat: round;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .modesection{
-    background-color: rgba(228, 228, 239);
-    background-image: url(./assets/images/icon-moon.svg);
-    background-repeat: round;
-    width: 30px;
-    height: 30px;
-    border-radius: 5px;
-    padding: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-  }
-
-  header{
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-   }
-
-   .logosection{
-    background-image: url(./assets/images/logo-light-theme.svg);
-    width: 250px;
-    height: 35px;
-
-   }
-
-   .text h1{
-    font-family: 'inter', sans-serif;
-    font-weight: bold;
-    font-size: 64px;
-    line-height: 100%;
-    letter-spacing: -1px;
-    text-align: center;
-    margin: 20px auto;
-    width: 600px;
-    font-weight: bold;
-   }
-
-   .characters{
-    width: 99%;
-    height: fit-content;
-    margin: 30px auto;
-   }
-
    textarea{
     width: 99%;
     border-radius: 10px;
@@ -88,11 +35,7 @@ body {
     outline: none;
    }
 
-   .characters .checks{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-   }
+   
 
    input[type="chechbox"]{
     background-color: red;
@@ -104,101 +47,6 @@ body {
     accent-color: rgba(211, 160, 250); 
    }
 
-   #limit{
-    width: 35px;
-    height: 10px;
-    border: 1px solid black;
-    border-radius: 6px;
-    padding: 5px;
-    text-align: center;
-    margin-left: 10px;
-    display: none;
-   }
-   #sps{
-    display: none;
-   }
-
-   .lefts{
-    display: flex;
-    gap: 10px;
-   }
-
-   span{
-    display:none;
-   }
-
-   #tt-chars{
-    background-image: url(./assets/images/pattern-character-count.svg);
-    background-repeat: round;
-   }
-
-   #wd-count{
-    background-image: url(./assets/images/pattern-word-count.svg);
-    background-repeat: round;
-   }
-
-   #st-count{
-    background-image: url(./assets/images/pattern-sentence-count.svg);
-    background-repeat: round;
-   }
-
-   
-
-   
-
-   .lD{
-    width: 100%;
-    
-    margin-top: 40px;
-    margin-bottom: 40px;
-   }
-   .bars b{
-    font-size: 24px;
-   }
-   
-   progress {
-    width: 95%;
-    height: 15px;
-    border-radius: 10px;
-    appearance: none;
-}
-
-progress::-webkit-progress-bar {
-    background-color: #e0e0e0;
-    border-radius: 10px;
-}
-
-progress::-webkit-progress-value {
-    background-color: rgba(211, 160, 250);
-    border-radius: 10px;
-}
-
-progress::-moz-progress-bar {
-    background-color: rgba(228, 228, 239);
-    border-radius: 10px;
-}
-
-.bar{
-  display: flex;
-  justify-content: space-between;
-  margin: 21px;
-}
-
-#letter{
-  width: 5%;
-}
-#percent{
-  width: 20%;
-  text-align: right;
-}
-
-
-.bar label:nth-child(1){
-  width: 5px;
-}
-
-
-
 
 
 
@@ -206,231 +54,21 @@ progress::-moz-progress-bar {
 
    @media (max-width: 768px) {
     
-    .logosection{
-      width: 150px ;
-      height: 30px ;
-      background-repeat: round;
-  
-     }
-    .main h1{
-      width: 97.5%;
-      font-size: 50px;
-    }
-
-    textarea{
-      width: 90%;
-      
-    }
-
-    .data{
-      width: 343px;
-      height: 422px;
-    }
-
-    .elements{
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      height: 130px;
-      margin-bottom: 16px;
-      border-radius: 12px;
-    }
-
-    .image{
-      width: 40%;
-      height: 100%;
-    }
-
-    .texts{
-      padding-left: 20px;
-    }
-    .texts h2{
-      font-family: 'inter', sans-serif;
-      font-weight: bold;
-      font-size: 60px;
-      line-height: 0px;
-    }
-    .texts p{
-      margin-top: -15px;
-    }
-
     
 
     
-
-    .lefts{
-      display: block;
-    }
-    
-
-    .checks{
-      margin-top: 10px;
-      display: block !important;
-    }
-
-      progress{
-       padding: 0 15px;
-
-      }
-   
    }
 
    /* tablet */
 
    @media (min-width: 768px) and (max-width: 1023px) {
-     .main h1{
-      width: 510px;
-     }
-
-     textarea{
-      width: 98%;
-      margin: auto;
-     }
-
-     .data{
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .elements{
-      max-width: 224px;
-      min-width: 30%;
-      height: 150px;
-      margin-bottom: 16px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    progress{
-      /* width: 90%; */
-    }
-
-    .image{
-      width: 30%;
-      height: 100%;
-    }
-
-    .image{
-      background-repeat: round;
-    }
-
-    .texts{
-      padding: 20px;
-    }
-    .texts h2{
-      font-family: 'inter', sans-serif;
-      font-weight: bold;
-      font-size: 60px;
-      line-height: 1px;
-    }
-
-   }
-
-   @media (min-width:1024px) {
-    body{
-      padding: 30px;
-    }
-    .data{
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .elements{
-      max-width: 224px;
-      min-width: 32%;
-      height: 150px;
-      margin-bottom: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 12px;
-    }
-
-    .image{
-      width: 40%;
-      height: 100%;
-    }
-
-    .texts{
-      padding: 20px;
-    }
-    .texts h2{
-      font-family: 'inter', sans-serif;
-      font-weight: bold;
-      font-size: 60px;
-      line-height: 1px;
-    }
-
-    #percent{
-      width: 10%;
-      text-align: right;
-    }
-    #letter{
-      width: 2%;
-    }
+     
    }
 
    
-
-   
-
-
-
-
-
   
   /* dark theme */
-  @media (prefers-color-scheme: dark) {
-    
-    body{
-        margin: 0;
-        background-image: url(./assets/images/bg-dark-theme.png);
-        background-repeat: round;
-    }
-
-    header{
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-
-    .logosection{
-      width: 250px;
-      height: 35px;
-      background-image: url(./assets/images/logo-dark-theme.svg);
-    }
-
-    textarea{
-      background-color: rgba(42, 43, 55);
-      border: 1px solid rgba(64, 66, 84);
-    }
-
-    .main h1, .characters, .bars, i, .lD b, label{
-      color: white;
-    }
-
-    .modesection{
-    background-color: rgb(60, 60, 61);
-    background-image: url(./assets/images/icon-sun.svg);
-    }
-
-    progress::-webkit-progress-bar {
-      background-color: rgba(64, 66,84);
-      border-radius: 10px;
-  }
-    
-  }
+  
   
 
 
