@@ -44,6 +44,7 @@ document.getElementById("numOfChar").innerHTML = charLength ?? 0;
 // showing/hiding character limit input
 
 let charLimit = document.getElementById("count");
+
 charLimit.addEventListener('change', function(){
 
   if(this.checked){

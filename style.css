@@ -55,6 +55,40 @@
     --textarea-border: var(--neutral-600)
 
   }
+/* automatic theme change */
+
+/* dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root{
+     
+        --background: var(--neutral-900);
+        --logo: url(./assets/images/logo-dark-theme.svg);
+        --background-image: url(./assets/images/bg-dark-theme.png);
+        --text-color: var(--neutral-100);
+        --accent-color: var(--yellow-500);
+        --toggle-button-bg: var(--neutral-700);
+        --textarea-bg: var(--neutral-800);
+        --textarea-border: var(--neutral-600)
+    
+    
+    }
+    }
+
+    /* light mode */
+    @media (prefers-color-scheme: light) {
+      :root{
+       
+        --background: var(--neutral-0);
+        --background-image: url(./assets/images/bg-light-theme.png);
+        --logo: url(./assets/images/logo-light-theme.svg);
+        --text-color: var(--neutral-900);
+        --accent-color: var(--purple-500);
+        --toggle-button-bg: var(--neutral-100);
+        --textarea-bg: var(--neutral-100);
+        --textarea-border: var(--neutral-200)
+      
+      }
+      }
   
  
 
@@ -251,6 +285,7 @@
     margin-top: 20px;
   }
   
+/* automatic theme change */
 
 
 
