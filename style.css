@@ -48,7 +48,7 @@
     margin-inline: auto;
     margin-block: 42px;
     background-image: url(./assets/images/bg-light-theme.png);
-    font-family: 'Dmsans', sans-serif;
+    font-family: 'DMsans', sans-serif;
     
   }
 
@@ -169,15 +169,52 @@
    }
 
 
-   
-
-   
-
-   
-
    input[type="checkbox"]:checked {
     accent-color: rgba(211, 160, 250); 
    }
+
+   .letterDensity{
+    margin-top: 24px;
+   }
+
+   .data{
+    height: 21px;
+    margin-block: 6px;
+    
+   }
+
+   .progress-container {
+    max-width: 859px;
+    width: 100%;
+    height: 12px;
+    background: var(--neutral-100);
+    border-radius: 10px;
+    /* overflow: hidden; */
+  }
+  
+  .progress-bar {
+    height: 100%;
+    width: 50%; 
+    border-radius: 10px;
+    background: var(--purple-400);
+    transition: width 0.4s ease-in-out;
+  }
+  
+  h3{
+    margin-bottom: 20px;
+  }
+
+  .data small:nth-child(1){
+    width: 16px;
+  }
+
+  data small:nth-child(2){
+    width: 87px;
+  }
+  .letterDensity p{
+    margin-top: 20px;
+  }
+  
 
 
 
