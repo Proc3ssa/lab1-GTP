@@ -133,6 +133,42 @@
     margin-left: 20px;
    }
 
+   .stats{
+    margin-top: 48px;
+   }
+
+   .coontainer{
+    width: 319.33px;
+    height: 150px;
+    border-radius: 12px;
+    border: none;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-block:20px ;
+    padding-left: 20px;
+   }
+
+   .coontainer h2{
+    font-size: 64px;
+   }
+
+   .totalCharacters{
+    background-image: url(./assets/images/pattern-character-count.svg);
+    background-color: var(--purple-400);
+   }
+
+   .wordCount{
+    background-image: url(./assets/images/pattern-word-count.svg);
+    background-color: var(--yellow-500);
+   }
+
+   .sentencecount{
+    background-image: url(./assets/images/pattern-sentence-count.svg);
+    background-color: var(--orange-500);
+   }
+
+
    
 
    
