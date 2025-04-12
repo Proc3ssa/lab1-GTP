@@ -1,14 +1,16 @@
 // bismillah
 
 
-
 function toggleTheme() {
-  document.body.classList.toggle('dark-theme');
+  let isDark = document.body.classList.toggle('dark-theme');
+
+  const toggle = document.getElementById('toggle');
+    
+  toggle.src = isDark ? './assets/images/icon-sun.svg' : './assets/images/icon-moon.svg';
 }
 
-let themeButton = document.getElementById('changeTheme');
 
-themeButton.addEventListener('click', toggleTheme);
+
 
 
 let characters = document.getElementById("characters");
