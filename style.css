@@ -84,11 +84,11 @@
    textarea{
     width: 99%;
     border-radius: 10px;
-    background-color: rgba(242, 242, 247);
-    border: 1px solid #2A2B37;
+    background-color: var(--neutral-100);
+    border: 2px solid var(--neutral-200);
     margin: auto;
     height: 200px;
-    padding: 10px;
+    padding: 6px;
    }
 
    textarea:focus{
