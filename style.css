@@ -67,6 +67,18 @@
     justify-content: center;
   }
   
+  h1{
+    margin-block:48px;
+    margin-inline: auto;
+    height: 128px;
+    width:510px;
+    color:var(--neutral-900);
+    font-size: 64px;
+    line-height: -1px;
+    font-family: 'DMsans', sans-serif;
+    text-align: center;
+  }
+  
   
 
    textarea{
