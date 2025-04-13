@@ -1,103 +1,93 @@
 // bismillah
 
-
 function toggleTheme() {
   let isDark = document.body.classList.toggle('dark-theme');
-
   const toggle = document.getElementById('toggle');
-    
   toggle.src = isDark ? './assets/images/icon-sun.svg' : './assets/images/icon-moon.svg';
 }
 
+let characters = document.getElementById("texts");
+let wordCountEl = document.getElementById("wordCount");
+let charCountEl = document.getElementById("numOfChar");
+let sentenceCountEl = document.getElementById("sentCount");
+let excludeSpacesCheckbox = document.getElementById("excSpaces");
+let charLimitCheckbox = document.getElementById("count");
+let limitInput = document.getElementById("limit");
 
+let excludeSpaces = false;
+let charLimitEnabled = false;
 
-
-
-let characters = document.getElementById("characters");
-let sentences;
-function getCharLen(excSpace){ //get and set charater lenght
-
-let charLength, wordCount;
-
-wordCount = characters.value.split(/\s/g).length;
-wordCount < 10 ? wordCount = "0"+wordCount : "";
-document.getElementById("numOfWords").innerHTML = wordCount;
-
-if(excSpace){
-charLength < 10 ? charLength = "0"+charLength : "";
-
-charLength = (characters.value).replace(/\s/g, "").length;
-document.getElementById("sps").style.display = "inline";
-
-}
-else{
-  charLength = characters.value.length
-  document.getElementById("sps").style.display = "none";
-  
+// ==========================
+// Update Word Count
+// ==========================
+function updateWordCount() {
+  let text = characters.value.trim();
+  let words = text === "" ? [] : text.split(/\s+/);
+  let count = words.length;
+  wordCountEl.innerText = count < 10 ? "0" + count : count;
 }
 
+// ==========================
+// Update Character Count
+// ==========================
+function updateCharCount() {
+  let text = characters.value;
+  let length = excludeSpaces ? text.replace(/\s/g, "").length : text.length;
+  charCountEl.innerText = length < 10 ? "0" + length : length;
 
-document.getElementById("numOfChar").innerHTML = charLength ?? 0;
-}
+  // Show/hide "excluding space" tag
+  document.getElementById("sps").style.display = excludeSpaces ? "inline" : "none";
 
-
-// showing/hiding character limit input
-
-let charLimit = document.getElementById("count");
-
-charLimit.addEventListener('change', function(){
-
-  if(this.checked){
-    document.getElementById("limit").style.display = "inline";
+  // Check limit
+  if (charLimitEnabled && limitInput.value) {
+    let limit = parseInt(limitInput.value);
+    let alertBox = document.querySelector(".alert");
+    if (length > limit) {
+      alertBox.style.display = "block";
+      alertBox.querySelector("span").innerText = limit;
+    } else {
+      alertBox.style.display = "none";
+    }
   }
-
-  else{
-    document.getElementById("limit").style.display = "none";
-
-  }
-})
-
-
-
-
-function getSpaceStatus(){ // including/excluding spaces
-
-let excludeSpaces;
-
-
-let Spaces = document.getElementById("spaces");
-Spaces.addEventListener('change', function(){
-  
-  if(this.checked){
-    excludeSpaces = true;
-    getCharLen(excludeSpaces);
-
-  }
-  else{
-    excludeSpaces = false;
-    getCharLen(excludeSpaces);
-  }
-
-})
 }
 
-function getSentences(){
-  sentences = characters.value.split(".").length;
-  
-  document.getElementById("sentCount").innerHTML = sentences;
+// ==========================
+// Update Sentence Count
+// ==========================
+function updateSentenceCount() {
+  let sentences = characters.value.split(/[.!?]+/).filter(s => s.trim().length > 0);
+  let count = sentences.length;
+  sentenceCountEl.innerText = count < 10 ? "0" + count : count;
 }
 
-getCharLen(false);
-getSpaceStatus();
-getSentences();
+// ==========================
+// Master Update Function
+// ==========================
+function updateAll() {
+  updateWordCount();
+  updateCharCount();
+  updateSentenceCount();
+}
 
+// ==========================
+// Event Listeners
+// ==========================
+characters.addEventListener("input", updateAll);
 
+excludeSpacesCheckbox.addEventListener("change", function () {
+  excludeSpaces = this.checked;
+  updateAll();
+});
 
-// setting limit bound 
+charLimitCheckbox.addEventListener("change", function () {
+  charLimitEnabled = this.checked;
+  document.getElementById("limit").style.display = this.checked ? "inline" : "none";
+  updateAll();
+});
 
-let limit = document.getElementById("limit");
-let limitValue;
+limitInput.addEventListener("input", updateCharCount);
 
-limit.addEventListener('change', function(){
-  limitValue = limit.value;
-})
+// ==========================
+// Initial Load
+// ==========================
+updateAll();

@@ -1,130 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Character Counter</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script src="./index.js"></script>
-
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
 
+  <!-- Header Section -->
   <header class="disCenter">
-
     <div class="logo">
       <div class="logo" id="logo"></div>
     </div>
-
     <button class="toggle disCenter" id="changeTheme" onclick="toggleTheme()">
-      <img  id="toggle" src="./assets/images/icon-moon.svg" alt="toggle icon image">
+      <img id="toggle" src="./assets/images/icon-moon.svg" alt="toggle icon image"/>
     </button>
-
   </header>
 
+  <!-- Main Section -->
   <main>
+    <h1>Analyze your text in real-time.</h1>
 
-    <h1>
-      Analyze your text in real-time.
-    </h1>
+   <textarea name="" id="texts"></textarea>
 
-    <textarea name="texts" id="texts">
+    <!-- Alert Box -->
+    <div class="alert" style="display: none;">
+      <img src="./assets/images/icon-info.svg" alt="">
+      <small>Limit reached! Your text exceeds <span>300</span> characters</small>
+    </div>
 
-    </textarea>
-     <div class="alert debugger" >
-      <img src="./assets/images/icon-info.svg" alt=""><small>Limit reached! Your text exceeds <span>300</span> characters</small>
-     </div>
-
+    <!-- Options -->
     <div class="options disCenter">
-
       <div class="excSpaces">
-        <input type="checkbox" name="" id="excSpaces"> <label for="excSpaces">Exclude Spaces</label>
+        <input type="checkbox" id="excSpaces">
+        <label for="excSpaces">Exclude Spaces</label>
 
-        
-        <input type="checkbox" name="" id="count" class="leftSmall"> <label for="count">Set Chatacter Limit</label> <input type="number" id="limit">
-
+        <input type="checkbox" id="count" class="leftSmall">
+        <label for="count">Set Character Limit</label>
+        <input type="number" id="limit" style="display: none;">
       </div>
-
       <div>
-        <label>Approx. reading time: < 1 minute  </label>
+        <label>Approx. reading time: &lt; 1 minute</label>
       </div>
     </div>
 
+    <!-- Stats Section -->
     <div class="stats disCenter">
       <div class="coontainer totalCharacters">
-          <h2 id="totalChars">278</h2>
-          <p>Total Characters</p>
+        <h2 id="numOfChar">00</h2>
+        <p>Total Characters <span id="sps" style="display:none;">(excluding spaces)</span></p>
       </div>
       <div class="coontainer wordCount">
-        <h2 id="wordCount">39</h2>
-          <p>Word Count</p>
+        <h2 id="wordCount">00</h2>
+        <p>Word Count</p>
       </div>
       <div class="coontainer sentencecount">
-        <h2 id="sentencecount">04</h2>
-          <p>Sentence Count</p>
+        <h2 id="sentCount">00</h2>
+        <p>Sentence Count</p>
       </div>
     </div>
 
+    <!-- Letter Density (Optional, UI placeholder) -->
     <div class="letterDensity">
       <h3>Letter Density</h3>
 
       <div class="data disCenter">
         <small class="">E</small>
-
         <div class="progress-container">
           <div class="progress-bar" style="width: 16%;"></div>
         </div>
-
         <small class="">40(16.06%)</small>
       </div>
 
-      <div class="data disCenter">
-        <small class="">E</small>
-
-        <div class="progress-container">
-          <div class="progress-bar" style="width: 16%;"></div>
-        </div>
-
-        <small class="">40(16.06%)</small>
-      </div>
-
-      <div class="data disCenter">
-        <small class="">E</small>
-
-        <div class="progress-container">
-          <div class="progress-bar" style="width: 16%;"></div>
-        </div>
-
-        <small class="">40(16.06%)</small>
-      </div>
-
-      <div class="data disCenter">
-        <small class="">E</small>
-
-        <div class="progress-container">
-          <div class="progress-bar" style="width: 16%;"></div>
-        </div>
-
-        <small class="">40(16.06%)</small>
-      </div>
-
-      <div class="data disCenter">
-        <small class="">E</small>
-
-        <div class="progress-container">
-          <div class="progress-bar" style="width: 16%;"></div>
-        </div>
-
-        <small class="">40(16.06%)</small>
-      </div>
-
+      
       <p>See more <i class="fas fa-chevron-down"></i></p>
-
     </div>
-
   </main>
-  
+
+  <!-- Script -->
+  <script src="./index.js"></script>
 </body>
 </html>

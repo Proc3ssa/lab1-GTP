@@ -138,7 +138,8 @@
     margin-block:48px;
     margin-inline: auto;
     height: 128px;
-    width:510px;
+    max-width:510px;
+    width: auto;
     color: var(--text-color);
     font-size: 64px;
     line-height: -1px;
@@ -208,7 +209,8 @@
    }
 
    .coontainer{
-    width: 319.33px;
+    width: 33%;
+    max-width: 319.33px;
     height: 150px;
     border-radius: 12px;
     border: none;
@@ -285,7 +287,22 @@
     margin-top: 20px;
   }
   
-/* automatic theme change */
+
+/* Tablet mode */
+
+@media (max-width:768px) {
+body{
+  max-width: 704px;
+  width: auto;
+  margin-inline: auto;
+}
+
+.coontainer{
+  max-width: 224px;;
+  width: 32%;
+}
+  
+}
 
 
 
