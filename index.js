@@ -60,6 +60,62 @@ function updateSentenceCount() {
   sentenceCountEl.innerText = count < 10 ? "0" + count : count;
 }
 
+let showAllLetters = false;
+
+function updateLetterDensity() {
+  const text = characters.value.toUpperCase().replace(/[^A-Z]/g, "");
+  const totalLetters = text.length;
+
+  const letterCounts = {};
+  for (let i = 0; i < 26; i++) {
+    letterCounts[String.fromCharCode(65 + i)] = 0;
+  }
+
+  for (let char of text) {
+    if (letterCounts.hasOwnProperty(char)) {
+      letterCounts[char]++;
+    }
+  }
+
+  const entries = Object.entries(letterCounts)
+    .filter(([_, count]) => count > 0)
+    .sort((a, b) => b[1] - a[1]); // sort by frequency
+
+  const densityContainer = document.querySelector(".letterDensity");
+  const limit = 5;
+  const visibleEntries = showAllLetters ? entries : entries.slice(0, limit);
+
+  const containerHTML = visibleEntries.map(([letter, count]) => {
+    const percent = ((count / totalLetters) * 100).toFixed(2);
+    return `
+      <div class="data disCenter">
+        <small>${letter}</small>
+        <div class="progress-container">
+          <div class="progress-bar" style="width: ${percent}%;"></div>
+        </div>
+        <small>${count} (${percent}%)</small>
+      </div>`;
+  }).join("");
+
+  const toggleLabel = showAllLetters ? "See less" : "See more";
+
+  densityContainer.innerHTML = `
+    <h3>Letter Density</h3>
+    ${containerHTML}
+    <p class="toggle-density" style="cursor:pointer; color:black;">
+      ${toggleLabel} <i class="fas fa-chevron-${showAllLetters ? "up" : "down"}"></i>
+    </p>
+  `;
+
+  // Add event listener to toggle
+  document.querySelector(".toggle-density").addEventListener("click", () => {
+    showAllLetters = !showAllLetters;
+    updateLetterDensity(); // re-render
+  });
+}
+
+
+
 // ==========================
 // Master Update Function
 // ==========================
@@ -67,6 +123,7 @@ function updateAll() {
   updateWordCount();
   updateCharCount();
   updateSentenceCount();
+  updateLetterDensity();
 }
 
 // ==========================
