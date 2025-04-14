@@ -108,6 +108,25 @@ function updateLetterDensity() {
   });
 }
 
+// reading time
+
+function updateReadingTime() {
+  const text = characters.value.trim();
+  const words = text.split(/\s+/).filter(Boolean).length;
+  const wordsPerMinute = 200;
+
+  let time = Math.ceil(words / wordsPerMinute);
+
+  if (words === 0) {
+    document.getElementById("readingTime").innerText = "Approx. reading time: 0 minute";
+  } else if (time <= 1) {
+    document.getElementById("readingTime").innerText = "Approx. reading time: < 1 minute";
+  } else {
+    document.getElementById("readingTime").innerText = `Approx. reading time: ${time} minutes`;
+  }
+}
+
+// pull comment 
 
 
 // Master Update Function
@@ -116,6 +135,7 @@ function updateAll() {
   updateCharCount();
   updateSentenceCount();
   updateLetterDensity();
+  updateReadingTime();
 }
 
 // Event Listeners
