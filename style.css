@@ -104,7 +104,7 @@
     width:auto;
     margin-inline: auto;
     margin-block: 42px;
-
+    padding:10px;
     background-image: var(--background-image);
     font-family: 'DMsans', sans-serif;
     transition: background 0.3s, color 0.3s;
@@ -152,6 +152,7 @@
    textarea{
     width: 100%;
     border-radius: 10px;
+    color: var(--text-color);
     background-color: var(--textarea-bg);
     border: 2px solid var(--textarea-border);
     margin: 0 auto 16px auto;
@@ -187,6 +188,13 @@
     display: none;
    }
 
+   .excSpaces{
+    display: flex;
+    flex-direction: row;
+    min-width: 318px;
+    width: auto;
+   }
+
    .alert img{
     vertical-align: middle;
     margin-right: 5px;
@@ -215,7 +223,7 @@
    }
 
    .coontainer{
-    width: 33%;
+    width: 32%;
     max-width: 319.33px;
     height: 150px;
     border-radius: 12px;
@@ -292,23 +300,40 @@
   .letterDensity p{
     margin-top: 20px;
   }
+
+  @media (max-width:500px) {
+
+    h1{
+      font-size: 50px;
+      height: 150px;
+    }
+
+    .excSpaces{
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .options{
+      flex-direction: column;
+      gap: 10px;
+    }
+    .options > *{
+      width: 100%;
+    }
+    .leftSmall{
+      margin-left:0;
+    }
+
+    .stats{
+      flex-direction: column;
+      gap: 10px;
+    }
+    .coontainer{
+      min-width: 100%;
+    }
+  }
   
 
-/* Tablet mode */
-
-@media (max-width:768px) {
-body{
-  max-width: 704px;
-  width: auto;
-  margin-inline: auto;
-}
-
-.coontainer{
-  max-width: 224px;;
-  width: 32%;
-}
-  
-}
 
 
 
