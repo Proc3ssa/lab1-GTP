@@ -39,9 +39,11 @@ function updateCharCount() {
     let limit = parseInt(limitInput.value);
     let alertBox = document.querySelector(".alert");
     if (length > limit) {
+      characters.style.cssText = "border: 2px solid #DA3701; boxShadow: 1px 0px 5px #DA3701";
       alertBox.style.display = "block";
       alertBox.querySelector("span").innerText = limit;
     } else {
+      characters.style.cssText = "border: 2px solid #C27CF8; boxShadow: 1px 0px 5px #C27CF8";
       alertBox.style.display = "none";
     }
   }
