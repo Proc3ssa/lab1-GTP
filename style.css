@@ -58,7 +58,7 @@
 /* automatic theme change */
 
 /* dark mode */
-  @media (prefers-color-scheme: dark) {
+/*   @media (prefers-color-scheme: dark) {
     :root{
      
         --background: var(--neutral-900);
@@ -71,7 +71,7 @@
         --textarea-border: var(--neutral-600)
     
     
-    }
+    } */
     }
 
     /* light mode */
