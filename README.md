@@ -22,7 +22,7 @@ A responsive, real-time text analyzer that lets users track character count, wor
 
 ## 📸 Screenshots
 
-![Image](./assets/imagespreview.jpg)
+![Image](./assets/preview.jpg)
 
 ---
 
