@@ -112,5 +112,4 @@ character-counter-app/
 
 ## 🙌 Author
 
-**Your Name**  
 GitHub: [@Proc3ssa](https://github.com/Proc3ssa)
