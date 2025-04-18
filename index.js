@@ -13,6 +13,7 @@ let sentenceCountEl = document.getElementById("sentCount");
 let excludeSpacesCheckbox = document.getElementById("excSpaces");
 let charLimitCheckbox = document.getElementById("count");
 let limitInput = document.getElementById("limit");
+let time = document.getElementById('time');
 
 let excludeSpaces = false;
 let charLimitEnabled = false;
@@ -23,6 +24,7 @@ function updateWordCount() {
   let words = text === "" ? [] : text.split(/\s+/);
   let count = words.length;
   wordCountEl.innerText = count < 10 ? "0" + count : count;
+  (count < 200) ? time.innerHTML = "&lt; 1min" : time.innerHTML = "&gt; 1min"
 }
 
 // Update Character Count
@@ -38,12 +40,19 @@ function updateCharCount() {
   if (charLimitEnabled && limitInput.value) {
     let limit = parseInt(limitInput.value);
     let alertBox = document.querySelector(".alert");
-    if (length > limit) {
+    if (length >= limit) {
+      characters.disabled = true;
+      characters.style.cssText = "border: 2px solid #DA3701; boxShadow: 1px 0px 5px #DA3701";
       alertBox.style.display = "block";
       alertBox.querySelector("span").innerText = limit;
     } else {
       alertBox.style.display = "none";
     }
+  }
+  else{
+    characters.disabled = false;
+    characters.style.cssText = "border: 2px solid #C27CF8; boxShadow: 1px 0px 5px #C27CF8";
+    alertBox.style.display = "none";
   }
 }
 
@@ -96,7 +105,7 @@ function updateLetterDensity() {
   densityContainer.innerHTML = `
     <h3>Letter Density</h3>
     ${containerHTML}
-    <p class="toggle-density" style="cursor:pointer; color:black;">
+    <p class="toggle-density" style="cursor:pointer;">
       ${toggleLabel} <i class="fas fa-chevron-${showAllLetters ? "up" : "down"}"></i>
     </p>
   `;
