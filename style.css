@@ -38,7 +38,9 @@
     --accent-color: var(--purple-500);
     --toggle-button-bg: var(--neutral-100);
     --textarea-bg: var(--neutral-100);
-    --textarea-border: var(--neutral-200)
+    --textarea-border: var(--neutral-200);
+    --input-type-bg: var(--neutral-100);
+    --input-type-color: var(--neutral-900)
 
 
 
@@ -52,7 +54,9 @@
     --accent-color: var(--yellow-500);
     --toggle-button-bg: var(--neutral-700);
     --textarea-bg: var(--neutral-800);
-    --textarea-border: var(--neutral-600)
+    --textarea-border: var(--neutral-600);
+    --input-type-bg: var(--neutral-900);
+    --input-type-color: var(--neutral-600)
 
   }
 /* automatic theme change */
@@ -71,8 +75,8 @@
         --textarea-border: var(--neutral-600)
     
     
-    } */
-    }
+    } 
+        } */
 
     /* light mode */
     @media (prefers-color-scheme: light) {
@@ -110,6 +114,8 @@
     transition: background 0.3s, color 0.3s;
     
   }
+
+  
 
   .disCenter{
     display: flex;
@@ -255,11 +261,15 @@
    input[type="number"]{
     width: 55px;
     height: 29px;
-    border: 1px solid var(--neutral-900);
+    color: var(--text-color);
+    border: 1px solid var(--input-type-color);
+    background-color: transparent;
     border-radius: 6px;
     text-align: center;
     display: none;
    }
+
+   
 
    .leftSmall{
     margin-left: 20px;
@@ -267,10 +277,12 @@
 
    .stats{
     margin-top: 48px;
+    cursor: pointer;
    }
 
    .options, .letterDensity{
     color: var(--text-color);
+    cursor: pointer;
    }
 
    .coontainer{
@@ -350,6 +362,7 @@
   }
   .letterDensity p{
     margin-top: 20px;
+    
   }
 
   @media (max-width:500px) {
@@ -357,6 +370,7 @@
     h1{
       font-size: 50px;
       height: 150px;
+      cursor: pointer;
     }
 
     .excSpaces{
