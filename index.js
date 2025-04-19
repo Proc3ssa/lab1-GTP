@@ -14,6 +14,8 @@ let excludeSpacesCheckbox = document.getElementById("excSpaces");
 let charLimitCheckbox = document.getElementById("count");
 let limitInput = document.getElementById("limit");
 let time = document.getElementById('time');
+let alertBox = document.querySelector(".alert");
+
 
 let excludeSpaces = false;
 let charLimitEnabled = false;
@@ -37,7 +39,7 @@ function updateCharCount() {
   document.getElementById("sps").style.display = excludeSpaces ? "inline" : "none";
 
   // Check limit
-  if (charLimitEnabled && limitInput.value) {
+if (charLimitEnabled && limitInput.value) {
     let limit = parseInt(limitInput.value);
     let alertBox = document.querySelector(".alert");
     if (length >= limit) {
@@ -46,13 +48,13 @@ function updateCharCount() {
       alertBox.style.display = "block";
       alertBox.querySelector("span").innerText = limit;
     } else {
-      alertBox.style.display = "none";
+     
     }
   }
   else{
     characters.disabled = false;
     characters.style.cssText = "border: 2px solid #C27CF8; boxShadow: 1px 0px 5px #C27CF8";
-    alertBox.style.display = "none";
+    
   }
 }
 
@@ -138,6 +140,7 @@ excludeSpacesCheckbox.addEventListener("change", function () {
 charLimitCheckbox.addEventListener("change", function () {
   charLimitEnabled = this.checked;
   document.getElementById("limit").style.display = this.checked ? "inline" : "none";
+  alertBox.style.display = "none";
   updateAll();
 });
 
