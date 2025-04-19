@@ -94,11 +94,11 @@ function updateLetterDensity() {
     const percent = ((count / totalLetters) * 100).toFixed(2);
     return `
       <div class="data disCenter">
-        <small>${letter}</small>
+        <small style='width: 16px;'>${letter}</small>
         <div class="progress-container">
           <div class="progress-bar" style="width: ${percent}%;"></div>
         </div>
-        <small>${count} (${percent}%)</small>
+        <small style="width: 87px;">${count} (${percent}%)</small>
       </div>`;
   }).join("");
 
