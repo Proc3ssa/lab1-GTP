@@ -237,6 +237,10 @@
     transform: rotate(45deg);
   }
 
+  .display-none{
+    display: none;
+  }
+
  
    .alert{
     color: var(--orange-800);
