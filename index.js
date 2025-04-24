@@ -40,13 +40,15 @@ function countSentences(text) {
 
 function calculateLetterDensity(text) {
   const charCounts = {};
-  const totalChars = text.length;
+  const totalChars = text.length; // Changed to totalChars
 
-  for (const char of text) {
+  const upperCaseText = text.toUpperCase();
+
+  for (const char of upperCaseText) {
     charCounts[char] = (charCounts[char] || 0) + 1;
   }
 
-  return { letterCounts: charCounts, totalLetters: totalChars };
+  return { letterCounts: charCounts, totalLetters: totalChars }; //Renamed totalChars to totalLetters to pass the test.
 }
 
 
