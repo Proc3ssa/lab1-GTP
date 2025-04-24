@@ -250,4 +250,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //exporting for testing  
 
-module.exports = {toggleTheme, formatCount, updateTimeDisplay, updateAlertDisplay, resetAlertDisplay, countWords, countCharacters, countSentences, calculateLetterDensity, generateDensityHTML, updateWordCountDisplay, updateCharacterCountDisplay, updateSentenceCountDisplay, updateLetterDensityDisplay}
+module.exports = {
+  toggleTheme, 
+  formatCount, 
+  updateTimeDisplay, 
+  updateAlertDisplay, 
+  resetAlertDisplay, 
+  countWords, 
+  countCharacters, 
+  countSentences, 
+  calculateLetterDensity, 
+  generateDensityHTML, 
+  updateWordCountDisplay, 
+  updateCharacterCountDisplay, 
+  updateSentenceCountDisplay, 
+  updateLetterDensityDisplay
+}

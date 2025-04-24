@@ -1,3 +1,6 @@
+
+require('text-encoding').TextEncoder;
+
 const { JSDOM } = require('jsdom');
 const {
   toggleTheme,
