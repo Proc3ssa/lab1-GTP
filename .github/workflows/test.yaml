@@ -1,0 +1,22 @@
+name: Run Tests
+
+on: [push, pull_request] # runs on push and PR
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # or 16, or whatever you're using
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
