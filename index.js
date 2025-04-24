@@ -135,7 +135,7 @@ function updateLetterDensityDisplay(textInputElement, densityContainerElement) {
   }
 }
 
-// --- calling all functios---
+// calling all the functios
 function updateAll(
   charactersElement,
   wordCountElement,
@@ -154,7 +154,7 @@ function updateAll(
   updateLetterDensityDisplay(charactersElement, densityContainerElement);
 }
 
-// --- Event Listeners and Initial Setup ---
+//Event Listeners and Initial Setup
 document.addEventListener('DOMContentLoaded', () => {
   const bodyElement = document.body;
   const toggleElement = document.getElementById('toggle');
@@ -172,9 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let excludeSpaces = false;
   let charLimitEnabled = false;
 
-  // Initial theme setup (if needed, based on local storage or system preference)
-  // You might want to call toggleTheme with the appropriate initial state here
-
+  
   toggleElement.addEventListener('click', () => {
     toggleTheme(bodyElement, toggleElement, './assets/images/icon-sun.svg', './assets/images/icon-moon.svg');
   });
@@ -249,3 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     timeElement
   );
 });
+
+//exporting for testing  
+
+module.exports = {toggleTheme, formatCount, updateTimeDisplay, updateAlertDisplay, resetAlertDisplay, countWords, countCharacters, countSentences, calculateLetterDensity, generateDensityHTML, updateWordCountDisplay, updateCharacterCountDisplay, updateSentenceCountDisplay, updateLetterDensityDisplay}
