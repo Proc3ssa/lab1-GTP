@@ -1,92 +1,63 @@
 // bismillah
 
-function toggleTheme() {
-  let isDark = document.body.classList.toggle('dark-theme');
-  const toggle = document.getElementById('toggle');
-  toggle.src = isDark ? './assets/images/icon-sun.svg' : './assets/images/icon-moon.svg';
+// Making the functions utility functions 
+function toggleTheme(bodyElement, toggleElement, darkThemeSrc, lightThemeSrc) {
+  const isDark = bodyElement.classList.toggle('dark-theme');
+  toggleElement.src = isDark ? darkThemeSrc : lightThemeSrc;
+  return isDark; 
 }
 
-let characters = document.getElementById("texts");
-let wordCountEl = document.getElementById("wordCount");
-let charCountEl = document.getElementById("numOfChar");
-let sentenceCountEl = document.getElementById("sentCount");
-let excludeSpacesCheckbox = document.getElementById("excSpaces");
-let charLimitCheckbox = document.getElementById("count");
-let limitInput = document.getElementById("limit");
-let time = document.getElementById('time');
-let alertBox = document.querySelector(".alert");
-
-
-let excludeSpaces = false;
-let charLimitEnabled = false;
-
-// Update Word Count
-function updateWordCount() {
-  let text = characters.value.trim();
-  let words = text === "" ? [] : text.split(/\s+/);
-  let count = words.length;
-  wordCountEl.innerText = count < 10 ? "0" + count : count;
-  (count < 200) ? time.innerHTML = "&lt; 1min" : time.innerHTML = "&gt; 1min"
+function formatCount(count) {
+  return count < 10 ? "0" + count : count;
 }
 
-// Update Character Count
-function updateCharCount() {
-  let text = characters.value;
-  let length = excludeSpaces ? text.replace(/\s/g, "").length : text.length;
-  charCountEl.innerText = length < 10 ? "0" + length : length;
-
-  // Show/hide "excluding space" tag
-  document.getElementById("sps").style.display = excludeSpaces ? "inline" : "none";
-
-  // Check limit
-if (charLimitEnabled && limitInput.value) {
-    let limit = parseInt(limitInput.value);
-    let alertBox = document.querySelector(".alert");
-    if (length >= limit) {
-      characters.disabled = true;
-      characters.style.cssText = "border: 2px solid #DA3701; boxShadow: 1px 0px 5px #DA3701";
-      alertBox.style.display = "block";
-      alertBox.querySelector("span").innerText = limit;
-    } else {
-     
-    }
-  }
-  else{
-    characters.disabled = false;
-    characters.style.cssText = "border: 2px solid #C27CF8; boxShadow: 1px 0px 5px #C27CF8";
-    
-  }
+function updateTimeDisplay(wordCount, timeElement) {
+  timeElement.innerHTML = wordCount < 200 ? "&lt; 1min" : "&gt; 1min";
 }
 
-// Update Sentence Count
-function updateSentenceCount() {
-  let sentences = characters.value.split(/[.!?]+/).filter(s => s.trim().length > 0);
-  let count = sentences.length;
-  sentenceCountEl.innerText = count < 10 ? "0" + count : count;
+function updateAlertDisplay(alertBoxElement, limit) {
+  alertBoxElement.style.display = "block";
+  alertBoxElement.querySelector("span").innerText = limit;
 }
 
-let showAllLetters = false;
+function resetAlertDisplay(alertBoxElement) {
+  alertBoxElement.style.display = "none";
+}
 
-function updateLetterDensity() {
-  const text = characters.value.toUpperCase().replace(/[^A-Z]/g, "");
-  const totalLetters = text.length;
 
+function countWords(text) {
+  const trimmedText = text.trim();
+  return trimmedText === "" ? 0 : trimmedText.split(/\s+/).length;
+}
+
+function countCharacters(text, excludeSpaces) {
+  return excludeSpaces ? text.replace(/\s/g, "").length : text.length;
+}
+
+function countSentences(text) {
+  return text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+}
+
+function calculateLetterDensity(text) {
+  const upperCaseText = text.toUpperCase().replace(/[^A-Z]/g, "");
+  const totalLetters = upperCaseText.length;
   const letterCounts = {};
   for (let i = 0; i < 26; i++) {
     letterCounts[String.fromCharCode(65 + i)] = 0;
   }
-
-  for (let char of text) {
+  for (const char of upperCaseText) {
     if (letterCounts.hasOwnProperty(char)) {
       letterCounts[char]++;
     }
   }
+  return { letterCounts, totalLetters };
+}
 
+function generateDensityHTML(letterCounts, totalLetters, showAllLetters, densityContainerElement) {
   const entries = Object.entries(letterCounts)
     .filter(([_, count]) => count > 0)
-    .sort((a, b) => b[1] - a[1]); // sort by frequency
+    .sort((a, b) => b[1] - a[1]); // sotin using the letters frequencies
 
-  const densityContainer = document.querySelector(".letterDensity");
   const limit = 5;
   const visibleEntries = showAllLetters ? entries : entries.slice(0, limit);
 
@@ -104,47 +75,177 @@ function updateLetterDensity() {
 
   const toggleLabel = showAllLetters ? "See less" : "See more";
 
-  densityContainer.innerHTML = `
+  densityContainerElement.innerHTML = `
     <h3>Letter Density</h3>
     ${containerHTML}
     <p class="toggle-density" style="cursor:pointer;">
       ${toggleLabel} <i class="fas fa-chevron-${showAllLetters ? "up" : "down"}"></i>
     </p>
   `;
+}
 
-  // Add event listener to toggle
-  document.querySelector(".toggle-density").addEventListener("click", () => {
-    showAllLetters = !showAllLetters;
-    updateLetterDensity(); 
+// Update Functions for DOM Elements
+function updateWordCountDisplay(textInputElement, wordCountElement, timeElement) {
+  const wordCount = countWords(textInputElement.value);
+  wordCountElement.innerText = formatCount(wordCount);
+  updateTimeDisplay(wordCount, timeElement);
+}
+
+function updateCharacterCountDisplay(textInputElement, charCountElement, excludeSpaces, charLimitEnabled, limitInputElement, alertBoxElement) {
+  const charCount = countCharacters(textInputElement.value, excludeSpaces);
+  charCountElement.innerText = formatCount(charCount);
+  document.getElementById("sps").style.display = excludeSpaces ? "inline" : "none";
+
+  if (charLimitEnabled && limitInputElement.value) {
+    const limit = parseInt(limitInputElement.value);
+    if (charCount >= limit) {
+      textInputElement.disabled = true;
+      textInputElement.style.cssText = "border: 2px solid #DA3701; boxShadow: 1px 0px 5px #DA3701";
+      updateAlertDisplay(alertBoxElement, limit);
+    } else {
+      textInputElement.disabled = false;
+      textInputElement.style.cssText = "border: 2px solid #C27CF8; boxShadow: 1px 0px 5px #C27CF8";
+      resetAlertDisplay(alertBoxElement);
+    }
+  } else {
+    textInputElement.disabled = false;
+    textInputElement.style.cssText = "border: 2px solid #C27CF8; boxShadow: 1px 0px 5px #C27CF8";
+    resetAlertDisplay(alertBoxElement);
+  }
+}
+
+function updateSentenceCountDisplay(textInputElement, sentenceCountElement) {
+  const sentenceCount = countSentences(textInputElement.value);
+  sentenceCountElement.innerText = formatCount(sentenceCount);
+}
+
+let showAllLetters = false;
+
+function updateLetterDensityDisplay(textInputElement, densityContainerElement) {
+  const { letterCounts, totalLetters } = calculateLetterDensity(textInputElement.value);
+  generateDensityHTML(letterCounts, totalLetters, showAllLetters, densityContainerElement);
+
+  // Add event listener to toggle (needs to be inside for the updated element)
+  const toggleElement = densityContainerElement.querySelector(".toggle-density");
+  if (toggleElement) {
+    toggleElement.addEventListener("click", () => {
+      showAllLetters = !showAllLetters;
+      updateLetterDensityDisplay(textInputElement, densityContainerElement);
+    });
+  }
+}
+
+// --- calling all functios---
+function updateAll(
+  charactersElement,
+  wordCountElement,
+  charCountElement,
+  sentenceCountElement,
+  excludeSpaces,
+  charLimitEnabled,
+  limitInputElement,
+  alertBoxElement,
+  densityContainerElement,
+  timeElement
+) {
+  updateWordCountDisplay(charactersElement, wordCountElement, timeElement);
+  updateCharacterCountDisplay(charactersElement, charCountElement, excludeSpaces, charLimitEnabled, limitInputElement, alertBoxElement);
+  updateSentenceCountDisplay(charactersElement, sentenceCountElement);
+  updateLetterDensityDisplay(charactersElement, densityContainerElement);
+}
+
+// --- Event Listeners and Initial Setup ---
+document.addEventListener('DOMContentLoaded', () => {
+  const bodyElement = document.body;
+  const toggleElement = document.getElementById('toggle');
+  const charactersElement = document.getElementById("texts");
+  const wordCountElement = document.getElementById("wordCount");
+  const charCountElement = document.getElementById("numOfChar");
+  const sentenceCountElement = document.getElementById("sentCount");
+  const excludeSpacesCheckboxElement = document.getElementById("excSpaces");
+  const charLimitCheckboxElement = document.getElementById("count");
+  const limitInputElement = document.getElementById("limit");
+  const timeElement = document.getElementById('time');
+  const alertBoxElement = document.querySelector(".alert");
+  const densityContainerElement = document.querySelector(".letterDensity");
+
+  let excludeSpaces = false;
+  let charLimitEnabled = false;
+
+  // Initial theme setup (if needed, based on local storage or system preference)
+  // You might want to call toggleTheme with the appropriate initial state here
+
+  toggleElement.addEventListener('click', () => {
+    toggleTheme(bodyElement, toggleElement, './assets/images/icon-sun.svg', './assets/images/icon-moon.svg');
   });
-}
 
+  charactersElement.addEventListener("input", () => updateAll(
+    charactersElement,
+    wordCountElement,
+    charCountElement,
+    sentenceCountElement,
+    excludeSpaces,
+    charLimitEnabled,
+    limitInputElement,
+    alertBoxElement,
+    densityContainerElement,
+    timeElement
+  ));
 
+  excludeSpacesCheckboxElement.addEventListener("change", function () {
+    excludeSpaces = this.checked;
+    updateAll(
+      charactersElement,
+      wordCountElement,
+      charCountElement,
+      sentenceCountElement,
+      excludeSpaces,
+      charLimitEnabled,
+      limitInputElement,
+      alertBoxElement,
+      densityContainerElement,
+      timeElement
+    );
+  });
 
-// Master Update Function
-function updateAll() {
-  updateWordCount();
-  updateCharCount();
-  updateSentenceCount();
-  updateLetterDensity();
-}
+  charLimitCheckboxElement.addEventListener("change", function () {
+    charLimitEnabled = this.checked;
+    limitInputElement.style.display = this.checked ? "inline" : "none";
+    resetAlertDisplay(alertBoxElement);
+    updateAll(
+      charactersElement,
+      wordCountElement,
+      charCountElement,
+      sentenceCountElement,
+      excludeSpaces,
+      charLimitEnabled,
+      limitInputElement,
+      alertBoxElement,
+      densityContainerElement,
+      timeElement
+    );
+  });
 
-// Event Listeners
-characters.addEventListener("input", updateAll);
+  limitInputElement.addEventListener("input", () => updateCharacterCountDisplay(
+    charactersElement,
+    charCountElement,
+    excludeSpaces,
+    charLimitEnabled,
+    limitInputElement,
+    alertBoxElement
+  ));
 
-excludeSpacesCheckbox.addEventListener("change", function () {
-  excludeSpaces = this.checked;
-  updateAll();
+  // Initial Load
+  updateAll(
+    charactersElement,
+    wordCountElement,
+    charCountElement,
+    sentenceCountElement,
+    excludeSpaces,
+    charLimitEnabled,
+    limitInputElement,
+    alertBoxElement,
+    densityContainerElement,
+    timeElement
+  );
 });
-
-charLimitCheckbox.addEventListener("change", function () {
-  charLimitEnabled = this.checked;
-  document.getElementById("limit").style.display = this.checked ? "inline" : "none";
-  alertBox.style.display = "none";
-  updateAll();
-});
-
-limitInput.addEventListener("input", updateCharCount);
-
-// Initial Load
-updateAll();
