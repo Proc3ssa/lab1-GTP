@@ -39,19 +39,16 @@ function countSentences(text) {
 }
 
 function calculateLetterDensity(text) {
-  const upperCaseText = text.toUpperCase().replace(/[^A-Z]/g, "");
-  const totalLetters = upperCaseText.length;
-  const letterCounts = {};
-  for (let i = 0; i < 26; i++) {
-    letterCounts[String.fromCharCode(65 + i)] = 0;
+  const charCounts = {};
+  const totalChars = text.length;
+
+  for (const char of text) {
+    charCounts[char] = (charCounts[char] || 0) + 1;
   }
-  for (const char of upperCaseText) {
-    if (letterCounts.hasOwnProperty(char)) {
-      letterCounts[char]++;
-    }
-  }
-  return { letterCounts, totalLetters };
+
+  return { letterCounts: charCounts, totalLetters: totalChars };
 }
+
 
 function generateDensityHTML(letterCounts, totalLetters, showAllLetters, densityContainerElement) {
   const entries = Object.entries(letterCounts)
